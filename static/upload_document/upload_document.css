@@ -1,0 +1,25 @@
+.container {
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+.steps-container {
+    margin: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-document {
+    display: flex;
+}
+
+#sign-document-button {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+}

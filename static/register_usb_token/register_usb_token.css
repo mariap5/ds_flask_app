@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    display: flex;
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.rut-container {
+    background-color: #101010;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rut-form {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Login</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Demo Project">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Varela+Round&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='register/register.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='global.css')}}">
+        <style type="text/css"></style></head>
+<body>
+<div class="register">
+            <p class="register__title">Inregistrare</p>
+{% with errors = get_flashed_messages() %}
+
+            {% if errors %}
+              {% for error in errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+{% endwith %}
+            <form class="register__form">
+                <div>
+                    <label class="register__form__label" for="username">Username</label><br/>
+                    <input type="text" name="username" id="username-input"/>
+                </div>
+                <div>
+                    <label class="register__form__label"  for="password">Parola</label><br/>
+                    <input type="password" name="password" id='password-input'/>
+                </div>
+                <div class="register__2fa-select">
+                    <Label class="register__form__label"  for="2fa-option">2FA - Two Factor Authentication - option</Label>
+                    <select type="password" name="2fa-option" id = "2fa-option">
+                        <option value="usb_token">USB Token</option>
+                    </select>
+                </div>
+
+                <button class="button--primary register__button" id="register-button">Inregistreaza-te</button>
+            </form>
+        </div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='register/register.js')}}"></script>
+
+</body>
+</html>

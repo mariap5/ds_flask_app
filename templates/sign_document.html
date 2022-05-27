@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='sign_document/sign_document.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js" integrity="sha512-hI8jEOQLtyzkIiWVygLAcKPradIhgXQUl8I3lk2FUmZ8sZNbSSdHHrWo5mrmsW1Aex+oFZ+UUK7EJTVwyjiFLA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='FileSaver/FileSaver.js')}}"></script>
+
+    <script src="https://kit.fontawesome.com/dbb0b671d7.js" crossorigin="anonymous"></script>
+</head>
+    <script>
+        jwt = localStorage.getItem("jwt")
+        if (jwt !== null) {
+            var decoded_jwt = JSON.parse(atob(jwt.split(".")[1]))
+            if (decoded_jwt.two_factor_auth === 'inactive') {
+                window.location = '/register/register-usb-token'
+            }
+            else if (decoded_jwt.identity_verified === false) {
+                window.location = '/login'
+            }
+        }
+    </script>
+<body>
+    <div class="container">
+    <div class="steps-container">
+        <div class="upload-document box-color" id="upload-document">
+          <i class="fa-solid fa-file-circle-plus" style="color:white; font-size:40px;"></i>
+          <p style="text-align: center">Upload document</p>
+          <div class="check-box" id="upload-document-check-step">
+              <i class="fa-regular fa-circle-check" style="color: green; font-size:45px;"></i>
+          </div>
+        </div>
+        <div class="sign-document box-color" id="sign-document">
+            <i class="fa-solid fa-file-signature" style="color:white; font-size:40px;"></i>
+            <p style="text-align: center">Sign document</p>
+            <div class="check-box" id="sign-document-check-step">
+              <i class="fa-regular fa-circle-check" style="color: green; font-size:45px;"></i>
+            </div>
+
+        </div>
+        <div class="download-document box-color" id="download-document">
+             <i class="fa-solid fa-file-arrow-down"  style="color:white; font-size:40px;"></i>
+            <p style="text-align: center">Download signed document</p>
+        </div>
+    </div>
+    <div style="width: 500px;">
+        <p style="overflow-wrap: break-word" id="signature-base64"></p>
+    </div>
+
+</div>
+
+        <input style = "display:none" type="file" id="upload-document-input"/>
+        <form action='/document/upload' methods="GET">
+            <button class="button--primary" id="upload-document-button">Upload signed document</button>
+        </form>
+        <button class="button--primary" id="logout-button">Logout</button>
+
+<script type="text/javascript" src="{{ url_for('static', filename='sign_document/sign_document.js')}}"></script>
+</body>
+</html>

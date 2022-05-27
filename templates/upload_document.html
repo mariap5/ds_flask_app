@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload_document/upload_document.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js" integrity="sha512-hI8jEOQLtyzkIiWVygLAcKPradIhgXQUl8I3lk2FUmZ8sZNbSSdHHrWo5mrmsW1Aex+oFZ+UUK7EJTVwyjiFLA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://kit.fontawesome.com/dbb0b671d7.js" crossorigin="anonymous"></script>
+
+    <title>Upload signed document</title>
+</head>
+<body>
+    <div class = 'container'>
+            <div class = "steps-container">
+                <div class="upload-document box-color" id="upload-document">
+                    <i class="fa-solid fa-file-arrow-up" style="color:white; font-size:40px;"></i>
+                    <p style="text-align: center">Upload signed document</p>
+                    <div class="check-box" id="upload-document-check-step">
+                        <i class="fa-regular fa-circle-check" style="color: green; font-size:45px;"></i>
+                    </div>
+                    <div class="error-box" id="upload-document-error-box">
+                        <i class="fa-solid fa-circle-xmark" style="color: red; font-size:45px;"></i>
+                    </div>
+                </div>
+
+                <div class="send-document box-color" id="send-document">
+                    <i class="fa-solid fa-share-from-square" style="color:white; font-size:40px;"></i>
+                    <p style="text-align: center">Send document</p>
+                    <div class="check-box" id="send-document-check-step">
+                        <i class="fa-regular fa-circle-check" style="color: green; font-size:45px;"></i>
+                    </div>
+                    <div class="error-box" id="send-document-error-box">
+                        <i class="fa-solid fa-circle-xmark" style="color: red; font-size:45px;"></i>
+                    </div>
+                </div>
+
+                <div class="verify-success-document box-color" id="verify-success-document">
+                    <i class="fa-solid fa-key" style="color:white; font-size:40px;"></i>
+                    <p style="text-align: center">Document verified</p>
+                    <div class="check-box" id="verify-success-document-check-step">
+                        <i class="fa-regular fa-circle-check" style="color: green; font-size:45px;"></i>
+                    </div>
+                    <div class="error-box" id="verify-success-document-error-box">
+                        <i class="fa-solid fa-circle-xmark" style="color: red; font-size:45px;"></i>
+                    </div>
+                </div>
+            </div>
+        <div style="width: 500px;">
+            <p style = "text-align: center; color: red; overflow-wrap: break-word" id = "error-message"></p>
+        </div>
+    </div>
+
+        <input style = "display:none" type="file" id="upload-document-input"/>
+        <form action='/document/sign' methods="GET">
+            <button class="button--primary" id="sign-document-button">Sign document</button>
+        </form>
+        <button class="button--primary" id="logout-button">Logout</button>
+
+        <input style = "display:none" type="file" id="upload-signed-document-input"/>
+
+<script type="text/javascript" src="{{ url_for('static', filename='upload_document/upload_document.js')}}"></script>
+
+</body>
+</html>

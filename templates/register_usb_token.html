@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register usb token</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register_usb_token/register_usb_token.css')}}">
+    <script>
+        jwt = localStorage.getItem("jwt")
+        if (jwt === null) {
+            window.location = '/login'
+        } else {
+            var decoded_jwt = JSON.parse(atob(jwt.split(".")[1]))
+            if (decoded_jwt.two_factor_auth === 'active') {
+                window.location = "/sign-document"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="rut-container">
+        <p>Register USB token</p>
+        <input style="display: none" id='private-key-input' type="file" name="private_key"/>
+        <form action="/register/register-usb-token" method="POST" class="rut-form">
+            <input style="display: none" id='public-key-input' type="file" name="public_key"/>
+            <button class="button--primary" id="upload-certificate" type="button">Upload your certificate</button>
+            <button class="button--primary" id="upload-private-key" type="button">Upload your private key</button>
+            <button class="button--primary" id="register_usb_token" type="button">Register USB token</button>
+        </form>
+        <p id="public_key_file_name"></p>
+        <p id="private_key_file_name"></p>
+    </div>
+<script type="text/javascript" src="{{ url_for('static', filename='register_usb_token/register_usb_token.js')}}"></script>
+
+</body>
+</html>

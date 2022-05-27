@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    display: flex;
+    width:100vw;
+    height:100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.register__form__label {
+    margin: 10px 0 0 0;
+}
+
+.register__title {
+    font-size: 25px;
+    width: 250px;
+    text-align: center;
+
+}
+
+.register {
+    background-color: #101010;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.register__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register__button {
+    margin-top: 10px;
+}
+
+.register__2fa-select {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+
